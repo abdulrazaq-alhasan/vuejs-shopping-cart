@@ -1,10 +1,13 @@
 <script setup>
 import { computed } from 'vue';
 import { useProductsStore } from '../store/products';
+import { useRouter } from 'vue-router';
 
 const productsStore = useProductsStore()
 
 const products = computed(() => productsStore.productsList)
+
+const router = useRouter()
 </script>
 
 <template>
@@ -17,7 +20,7 @@ const products = computed(() => productsStore.productsList)
                     <p class="card-text my-0">{{ product.category }}</p>
                     <p class="card-text">Price: {{ product.price }} $</p>
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-primary btn-sm">Details</button>
+                        <button @click="router.push(`/details/${product.id}`)" class="btn btn-primary btn-sm">Details</button>
                         <button class="btn btn-success btn-sm">Add To Cart</button>
                     </div>
                 </div>

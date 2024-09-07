@@ -12,7 +12,7 @@ import Productdetails from '../pages/Productdetails.vue'
 const routes = [
     { path: '/', component: Home },
     { path: '/products', component: Products },
-    { path: '/details', component: Productdetails },
+    { path: '/details/:id', component: Productdetails },
     { path: '/cart', component: Cart },
 ]
 
