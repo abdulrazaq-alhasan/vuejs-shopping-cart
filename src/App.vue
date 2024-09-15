@@ -1,12 +1,19 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import Navbar from './components/Navbar.vue';
-import { useProductsStore } from './store/products';
 import { onMounted } from 'vue';
 
+// Product Store 
+import { useProductsStore } from './store/products';
 const productsStore = useProductsStore()
 
+// Cart Store
+import { useCartStore } from './store/Cart';
+const cartStore = useCartStore()
+
 onMounted(() => productsStore.getProducts())
+
+onMounted(() => cartStore.loadFromLocalStorage())
 
 </script>
 

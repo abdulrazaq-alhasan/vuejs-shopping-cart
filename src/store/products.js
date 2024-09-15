@@ -9,7 +9,6 @@ export const useProductsStore = defineStore('products', () => {
     const getProducts = async () => {
         await axios.get('https://fakestoreapi.com/products')
             .then(response => {
-                console.log(response.data)
                 products.value = response.data
             }).catch(err => {
                 console.log(err)

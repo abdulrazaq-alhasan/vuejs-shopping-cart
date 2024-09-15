@@ -1,11 +1,16 @@
 <script setup>
 import { computed } from "vue";
-import { useProductsStore } from "../store/products";
 import { useRouter } from "vue-router";
 
+// Product Store
+import { useProductsStore } from "../store/products";
 const productsStore = useProductsStore();
 
 const products = computed(() => productsStore.productsList);
+
+// Cart Store
+import { useCartStore } from "../store/Cart";
+const cartStore = useCartStore()
 
 const router = useRouter();
 </script>
@@ -23,7 +28,8 @@ const router = useRouter();
                         <button @click="router.push(`/details/${product.id}`)" class="btn btn-primary btn-sm">
                             Details
                         </button>
-                        <button class="btn btn-success btn-sm">Add To Cart</button>
+                        <button @click="cartStore.addToCart(product.id, product.price)"
+                            class="btn btn-success btn-sm">Add To Cart</button>
                     </div>
                 </div>
             </div>
